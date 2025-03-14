@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>高级科学计算器</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calculator">
+        <!-- 模式选择器会由JS动态添加 -->
+        
+        <!-- 一元二次方程求解器 -->
+        <div id="quadraticSolver" style="display: none;">
+            <h4>一元二次方程求解</h4>
+            <p>ax² + bx + c = 0</p>
+            <div class="equation-display">
+                <p>当前方程：</p>
+                <p id="currentEquation" class="current-equation">0 = 0</p>
+            </div>
+            <div class="equation-input">
+                <div class="coef-group">
+                    <label>a: </label>
+                    <input type="number" id="coefA" step="any" placeholder="a">
+                </div>
+                <div class="coef-group">
+                    <label>b: </label>
+                    <input type="number" id="coefB" step="any" placeholder="b">
+                </div>
+                <div class="coef-group">
+                    <label>c: </label>
+                    <input type="number" id="coefC" step="any" placeholder="c">
+                </div>
+                <button onclick="solveQuadratic()">求解</button>
+            </div>
+            <div id="solution"></div>
+        </div>
+
+        <!-- 单位换算器界面 -->
+        <div id="unitConverter" style="display: none;">
+            <h4>单位换算</h4>
+            <div class="converter-container">
+                <select id="unitCategory" class="unit-select">
+                    <!-- 由JS动态填充 -->
+                </select>
+                <div class="conversion-group">
+                    <input type="number" id="fromValue" step="any" placeholder="输入值">
+                    <select id="fromUnit" class="unit-select">
+                        <!-- 由JS动态填充 -->
+                    </select>
+                </div>
+                <div class="conversion-group">
+                    <input type="number" id="toValue" step="any" readonly>
+                    <select id="toUnit" class="unit-select">
+                        <!-- 由JS动态填充 -->
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- 显示区域 -->
+        <div class="display">
+            <input type="text" id="history" readonly>
+            <input type="text" id="current" readonly>
+        </div>
+
+        <!-- 按钮区域 -->
+        <div class="buttons">
+            <!-- 数字和运算符按钮 -->
+            <button onclick="clearDisplay('all')">C</button>
+            <button onclick="clearDisplay('current')">CE</button>
+            <button onclick="backspace()">⌫</button>
+            <button onclick="calculate('percent')">%</button>
+            <button onclick="calculate('1/x')">1/x</button>
+            <button onclick="calculate('pow2')">x²</button>
+            
+            <button onclick="calculate('sqrt')">√</button>
+            <button onclick="addToDisplay('7')">7</button>
+            <button onclick="addToDisplay('8')">8</button>
+            <button onclick="addToDisplay('9')">9</button>
+            <button onclick="addToDisplay('/')" class="operator">÷</button>
+            
+            <button onclick="calculate('abs')">|x|</button>
+            <button onclick="addToDisplay('4')">4</button>
+            <button onclick="addToDisplay('5')">5</button>
+            <button onclick="addToDisplay('6')">6</button>
+            <button onclick="addToDisplay('*')" class="operator">×</button>
+            
+            <button onclick="calculate('factorial')">n!</button>
+            <button onclick="addToDisplay('1')">1</button>
+            <button onclick="addToDisplay('2')">2</button>
+            <button onclick="addToDisplay('3')">3</button>
+            <button onclick="addToDisplay('-')" class="operator">−</button>
+            
+            <button onclick="toggleSign()">±</button>
+            <button onclick="addToDisplay('0')">0</button>
+            <button onclick="addToDisplay('.')">.</button>
+            <button onclick="calculateResult()" class="equal">=</button>
+            <button onclick="addToDisplay('+')" class="operator">+</button>
+        </div>
+    </div>
+
+    <!-- 脚本引用 -->
+    <script src="utils.js"></script>
+    <script src="basicCalculator.js"></script>
+    <script src="standardCalculator.js"></script>
+    <script src="scientificCalculator.js"></script>
+    <script src="functionPlotter.js"></script>
+    <script src="quadraticSolver.js"></script>
+    <script src="unitConverter.js"></script>
+    <script src="calculator.js"></script>
+</body>
+</html>
